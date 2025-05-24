@@ -18,37 +18,35 @@
             $UserName=$_POST['username'];
             $UserPass=$_POST['password'];
     
-        // 4.	Search username in file, else error message: “Wrong name or password.”
-         $f1=file("admin.txt");
+        // 4.	Search username in file
+         $f1=file("accounts.txt");
+         $found = false;
+
          foreach($f1 as $Details){
- //use explode to search
+//  use explode to search
             list($Name,$Password)=explode(" ",trim($Details));
           
             if ($Name==$UserName && $Password==$UserPass){
-//OR combine name and password to check
-                // $sth=$UserName." ".$UserPass;
-                // if ($sth==trim($Details)){
-                // 6.	Assign username to session
+                $found = true;
+                // 5.	Assign username to session
                 $_SESSION['username']=$UserName;
-                // 7.	Direct to member welcome page(header).
-                header("Location:admin.php");
+                // 6.	Direct to member welcome page(header).
+                header("Location: ../index.php");
                 exit;
             } 
         }
-                header("Location:adminlogin.php?error=1");
-                exit;
-        
-    }
 
+        if (!$found) {
+            header("Location: login.php?error=1");
+            session_destroy();
+            exit;
+        }
+        }
+
+        // If we get here without a login attempt, redirect to login page
+        header("Location: login.php");
+        exit;
         ?>
-      
-
- 
-
-
-
-
-
 
 
 </body>
