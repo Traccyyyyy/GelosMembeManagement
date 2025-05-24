@@ -3,6 +3,39 @@
 ## 🎯 Project Overview
 A comprehensive web-based member management system for Gelos Enterprises, demonstrating proficiency in full-stack web development. This project showcases practical implementation of user authentication, role-based access control, and data management using PHP and web technologies.
 
+## 📸 Features & Screenshots
+
+### Home Page & Navigation
+![Home Page](screenshots/home-page.png)
+*Clean and professional landing page with intuitive navigation*
+
+### User Authentication
+#### Registration System
+![Registration Form](screenshots/registration-form.png)
+*Secure registration form with password requirements*
+
+![Password Validation](screenshots/registration-validation.png)
+*Real-time password validation and requirements display*
+
+![Registration Success](screenshots/registration-success.png)
+*Successful registration with welcome message*
+
+![Registration Error](screenshots/registration-error.png)
+*Error handling for existing username or invalid input*
+
+#### Login Interface
+![Login Page](screenshots/login-page.png)
+*User-friendly login interface with error handling*
+
+### Marks Management
+#### Input Interface
+![Marks Input](screenshots/marks-input.png)
+*Easy-to-use marks entry system*
+
+#### Results Display
+![Marks Results](screenshots/marks-results.png)
+*Comprehensive results display with statistics and grading*
+
 ## 🚀 Key Features
 - **User Authentication System**
   - Secure login and registration functionality
