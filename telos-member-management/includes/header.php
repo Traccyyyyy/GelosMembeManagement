@@ -1,9 +1,23 @@
 <?php
+/**
+ * Common Header Template
+ * 
+ * Provides consistent header across all pages:
+ * - Session management
+ * - Navigation menu
+ * - Dynamic path handling
+ * - Responsive design elements
+ * - User state awareness
+ * 
+ * @package GelosManagement
+ * @subpackage Layout
+ */
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Get the relative path to root
+// Calculate relative path to root
 $root_path = "";
 if (dirname($_SERVER['PHP_SELF']) !== '/') {
     $depth = substr_count(dirname($_SERVER['PHP_SELF']), '/');
@@ -24,11 +38,13 @@ if (dirname($_SERVER['PHP_SELF']) !== '/') {
         <div id="headerContent">
             <nav>
                 <ul>
+                    <!-- Home Logo Link -->
                     <li class="menu">
                         <a href="<?php echo $root_path; ?>index.php">
                             <img src="<?php echo $root_path; ?>images/GE-icon.png" alt="Gelos Enterprises" width="47" height="55">
                         </a>
                     </li>
+                    <!-- Dynamic Navigation based on User State -->
                     <?php if (!isset($_SESSION['username'])): ?>
                         <li class="menu"><a href="<?php echo $root_path; ?>auth/login.php">LOGIN</a></li>
                         <li class="menu"><a href="<?php echo $root_path; ?>auth/register.php">REGISTER</a></li>

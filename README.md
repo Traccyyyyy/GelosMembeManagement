@@ -1,7 +1,97 @@
 # Gelos Member Management System
 
+[![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-blue.svg)](https://www.php.net/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Traccyyyyy/GelosMembeManagement/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/Traccyyyyy/GelosMembeManagement)](https://github.com/Traccyyyyy/GelosMembeManagement/commits/main)
+
 ## 🎯 Project Overview
 A comprehensive web-based member management system for Gelos Enterprises, demonstrating proficiency in full-stack web development. This project showcases practical implementation of user authentication, role-based access control, and data management using PHP and web technologies.
+
+## 🔍 Demo Access
+Test the application with these credentials:
+
+**Regular User Access:**
+```
+Username: demo_user
+Password: Demo123!
+```
+
+**Admin Access:**
+```
+Username: admin
+Password: Admin123!
+```
+
+## 📁 Project Structure
+```
+telos-member-management/
+├── admin/                 # Admin-specific functionality
+│   ├── admin.php         # Admin dashboard
+│   ├── adminlogin.php    # Admin login interface
+│   ├── adminprocess.php  # Admin authentication logic
+│   └── admin.txt         # Admin credentials storage
+├── auth/                 # User authentication
+│   ├── login.php        # User login interface
+│   ├── register.php     # User registration
+│   ├── logout.php       # Session termination
+│   └── accounts.txt     # User credentials storage
+├── includes/            # Common components
+│   ├── header.php      # Common header with navigation
+│   └── footer.php      # Common footer
+├── marks/              # Marks management
+│   ├── marks.php      # Marks input interface
+│   └── processMarks.php # Marks calculation logic
+├── css/               # Styling
+│   └── style.css     # Global styles
+└── images/           # Asset storage
+    └── *.png         # UI assets
+```
+
+## 💡 Key Code Examples
+
+### Secure Password Validation
+```php
+// Password validation with multiple requirements
+$hasNumber = preg_match('/[0-9]/', $UserPass);
+$hasLower = preg_match('/[a-z]/', $UserPass);
+$hasUpper = preg_match('/[A-Z]/', $UserPass);
+$hasSpecial = preg_match('/[!@#$%^&*()_+{}[\]<>?]/', $UserPass);
+
+if (!$hasNumber || !$hasLower || !$hasUpper || !$hasSpecial) {
+    header("Location: register.php?error=3");
+    exit();
+}
+```
+
+### Session Management
+```php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Protected route check
+if (!isset($_SESSION['username'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+```
+
+### Marks Calculation
+```php
+// Calculate statistics
+$total = array_sum($marks);
+$average = $total / count($marks);
+$highest = max($marks);
+$lowest = min($marks);
+
+// Grade calculation
+if ($average >= 85) $grade = 'HD';
+elseif ($average >= 75) $grade = 'D';
+elseif ($average >= 65) $grade = 'C';
+elseif ($average >= 50) $grade = 'P';
+else $grade = 'F';
+```
 
 ## 📸 Features & Screenshots
 

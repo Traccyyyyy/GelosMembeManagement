@@ -1,4 +1,18 @@
 <?php
+/**
+ * User Registration Page
+ * 
+ * This page provides a secure registration interface for new users.
+ * Features include:
+ * - Username validation
+ * - Password strength requirements
+ * - Password confirmation
+ * - Error handling and user feedback
+ * 
+ * @package GelosManagement
+ * @subpackage Authentication
+ */
+
 require_once '../includes/header.php';
 ?>
 
@@ -6,6 +20,7 @@ require_once '../includes/header.php';
 <div>
     <p style="color:red;">
         <?php
+        // Process and display error messages
         $error = isset($_GET['error']) ? $_GET['error'] : 0;
         switch($error) {
             case 1:
@@ -30,6 +45,8 @@ require_once '../includes/header.php';
         ?>
     </p>
 </div>
+
+<!-- Registration Form with Client-side Validation -->
 <form action="registerprocess.php" method="post">
     <div>
         <label for="username">Username:</label>
@@ -50,6 +67,7 @@ require_once '../includes/header.php';
     </div>
 </form>
 
+<!-- Password Requirements Information -->
 <div class="password-requirements">
     <p>Password requirements:</p>
     <ul>

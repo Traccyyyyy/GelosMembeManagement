@@ -1,9 +1,30 @@
 <?php
+/**
+ * Marks Input Interface
+ * 
+ * Provides interface for entering student marks:
+ * - Input validation for mark ranges (0-100)
+ * - Required field validation
+ * - Secure form submission
+ * - Session protection
+ * 
+ * @package GelosManagement
+ * @subpackage MarksManagement
+ */
+
 require_once '../includes/header.php';
+
+// Verify user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
 ?>
 
 <h1>Your marks</h1>
 <p>Please enter the 5 marks you received</p>
+
+<!-- Marks Input Form with Validation -->
 <form action="processMarks.php" method="post">
     <div>
         <label for="mark1">Mark 1:</label>

@@ -10,6 +10,19 @@
 <body>
         
         <?php
+        /**
+         * Login Process Handler
+         * 
+         * Manages user authentication and session creation:
+         * - Validates login credentials
+         * - Checks against stored user accounts
+         * - Manages session state
+         * - Handles login errors
+         * 
+         * @package GelosManagement
+         * @subpackage Authentication
+         */
+
         // 1.	Start session.
         session_start();
         // 2.	Check isset login 

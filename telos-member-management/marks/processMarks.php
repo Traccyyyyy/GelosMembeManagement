@@ -1,7 +1,21 @@
 <?php
+/**
+ * Marks Processing and Results Display
+ * 
+ * Processes submitted marks and displays results:
+ * - Validates mark ranges
+ * - Calculates statistics (total, average, highest, lowest)
+ * - Determines final grade
+ * - Displays results in formatted tables
+ * - Provides grade scale information
+ * 
+ * @package GelosManagement
+ * @subpackage MarksManagement
+ */
+
 require_once '../includes/header.php';
 
-// Check if user is logged in
+// Verify user is logged in
 if (!isset($_SESSION['username'])) {
     header("Location: ../auth/login.php");
     exit();
@@ -12,10 +26,11 @@ if (!isset($_SESSION['username'])) {
 
 <?php
 if (isset($_POST["calculate"])) {
-    // Validate all marks are between 0 and 100
+    // Initialize marks array and validation flag
     $marks = array();
     $isValid = true;
     
+    // Validate all marks are between 0 and 100
     for ($i = 1; $i <= 5; $i++) {
         $mark = (int)$_POST["mark$i"];
         if ($mark < 0 || $mark > 100) {
@@ -34,7 +49,7 @@ if (isset($_POST["calculate"])) {
         $highest = max($marks);
         $lowest = min($marks);
 
-        // Display results in a table
+        // Display results in a formatted table
         echo "<div class='results'>";
         echo "<h2>Mark Details</h2>";
         echo "<table border='1'>";
@@ -47,6 +62,7 @@ if (isset($_POST["calculate"])) {
         
         echo "</table>";
 
+        // Display statistical analysis
         echo "<h2>Statistics</h2>";
         echo "<table border='1'>";
         echo "<tr><td>Total Marks:</td><td>$total</td></tr>";
@@ -55,7 +71,7 @@ if (isset($_POST["calculate"])) {
         echo "<tr><td>Lowest Mark:</td><td>$lowest</td></tr>";
         echo "</table>";
 
-        // Add grade calculation
+        // Calculate and display final grade
         $grade = '';
         if ($average >= 85) $grade = 'HD';
         elseif ($average >= 75) $grade = 'D';
@@ -75,8 +91,10 @@ if (isset($_POST["calculate"])) {
 }
 ?>
 
+<!-- Link to enter new marks -->
 <p><a href="marks.php" class="button">Enter New Marks</a></p>
 
+<!-- Results styling -->
 <style>
 .results {
     margin: 20px 0;

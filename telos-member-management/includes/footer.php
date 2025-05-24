@@ -1,3 +1,17 @@
+<?php
+/**
+ * Common Footer Template
+ * 
+ * Provides consistent footer across all pages:
+ * - Contact information
+ * - Copyright notice
+ * - Acknowledgments
+ * - Dynamic year display
+ * 
+ * @package GelosManagement
+ * @subpackage Layout
+ */
+?>
     </main>
     <footer>
         <p>Contact us</p>
